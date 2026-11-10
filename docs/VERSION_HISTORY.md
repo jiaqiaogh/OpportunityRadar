@@ -1,8 +1,10 @@
 # Version History
 
+## v0.1.1 — 2026-11-09
+- Branch: `main`; base v0.1.0 commit `9e784519b10d2a578f746a3f938f9e23543d9f51`.
+- DIFF: add Go module, Go server, dashboard, gitignore; update VERSION, README, CHANGELOG, ARCHITECTURE, VERSION_HISTORY.
+- Git commit: inspect repository history for exact v0.1.1 commits.
+- Hash verification: use `Get-FileHash -Algorithm SHA256` on checked-out files; Git blob hashes are not SHA-256.
+
 ## v0.1.0 — 2026-11-09
-- Scope: initial documentation/bootstrap commit(s).
-- Branch: `main`.
-- DIFF: new README, VERSION, CHANGELOG and documentation files; no prior application code.
-- Commit SHA: inspect Git history for exact bootstrap commits (this file is part of those commits).
-- SHA-256: obtain from checked-out files using `sha256sum` or PowerShell `Get-FileHash -Algorithm SHA256`; no hashes are asserted without verification.
+- Initial documentation bootstrap, last commit `9e784519b10d2a578f746a3f938f9e23543d9f51`.
