@@ -1,17 +1,22 @@
 # OpportunityRadar
 
-**Version: v0.1.0** · Windows-first, local-first opportunity monitoring.
+**Version: v0.1.1** — local-first opportunity monitoring dashboard.
 
-Four planned independent radar modules: products, government procurement, business opportunities, and financial market information.
+## Run
+Requires Go 1.22 or later:
 
-## Current status
-v0.1.0 repository bootstrap only. No live data connectors, trading, automated purchasing, or GUI are implemented yet.
+```powershell
+go run ./cmd/opportunityradar
+```
 
-## Constraints
-- No paid servers or paid APIs.
-- Prefer official free APIs and permitted public datasets.
-- Local SQLite storage; no credentials in Git.
-- All real-money actions require explicit human approval.
-- Version, changelog, diff and SHA-256 evidence required for each release.
+Open `http://127.0.0.1:14236` on the same computer. To build a Windows executable:
 
-See `docs/DEVELOPMENT_RULES.md` and `docs/ARCHITECTURE.md`.
+```powershell
+go build -o OpportunityRadar.exe ./cmd/opportunityradar
+```
+
+The application serves a dark dashboard and `GET /api/status`. A scheduler refreshes its state every 30 seconds, saved atomically to `data/state.json`. Four independent radar module slots exist, but **no live source connectors or opportunities are implemented yet**. No fake profit or simulated results are presented as real.
+
+This version uses **standard-library JSON persistence**, not SQLite, React, or Wails. Those are still planned, and are not claimed as delivered. It does not incur paid API/server costs and listens on loopback only.
+
+See `docs/DEVELOPMENT_RULES.md`, `docs/ARCHITECTURE.md`, and `docs/VERSION_HISTORY.md`.
