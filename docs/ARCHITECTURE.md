@@ -1,9 +1,15 @@
-# Architecture — v0.1.0
+# Architecture — v0.1.1
 
-Target: Go backend, local SQLite, React/TypeScript frontend, Windows desktop packaging with Wails (subject to dependency and toolchain verification).
+## Implemented
+- Go standard-library HTTP server (`cmd/opportunityradar/main.go`) on loopback `127.0.0.1:14236`.
+- Read-only `GET /api/status` endpoint; HTML dashboard at `/`.
+- Four module descriptors: products, government, business, finance; all explicitly marked `awaiting_source`.
+- Background 30-second scheduler persists snapshots to `data/state.json` using a temporary file and rename.
+- No credentials, real-money actions, or external requests.
 
-Pipeline: scheduler -> source adapters -> normalization -> analyzer -> risk/scoring -> local storage -> API -> read-only UI.
+## Planned, not implemented
+- Official/free API source adapters and rate limiting.
+- Shared ingestion -> normalization -> analysis -> scoring -> UI pipeline.
+- SQLite migration; React/TypeScript UI and Wails Windows desktop packaging.
 
-Modules: products (price comparison), government (procurement), business (public company demand signals), finance (public market and filing alerts). Each adapter is independent; no live adapters have been implemented in v0.1.0.
-
-Planned release gates: v0.2 products; v0.3 procurement; v0.4 business; v0.5 finance; v1.0 integrated ranking. These are targets, not delivered features.
+This release intentionally delivers a dependency-free, runnable foundation before introducing external build dependencies. It must not be represented as a working market scanner.
